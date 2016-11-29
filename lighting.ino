@@ -72,19 +72,44 @@ void loop() {
   }
   Serial.println(f);
 
-  for (int p = f; p < f + 3; p++) {
-    arcylicLamp.setPixelColor(p, arcylicLamp.Color(b3, b3, b3));
+  if (f == 28) {
+    for (int p = f; p < f + 2; p++) {
+      arcylicLamp.setPixelColor(p, arcylicLamp.Color(b3, b3, b3));
+      arcylicLamp.show();
+    }
+    arcylicLamp.setPixelColor(0, arcylicLamp.Color(b3, b3, b3));
     arcylicLamp.show();
-  }
 
-  for (int q = 0; q < f; q++) {
-    arcylicLamp.setPixelColor(q, arcylicLamp.Color(0, 0, 0));
+    for (int q = 1; q < f; q++) {
+      arcylicLamp.setPixelColor(q, arcylicLamp.Color(0, 0, 0));
+      arcylicLamp.show();
+    }
+  } else if ( f == 29) {
+    arcylicLamp.setPixelColor(29, arcylicLamp.Color(b3, b3, b3));
     arcylicLamp.show();
-  }
+    for (int q = 0; q < 2; q++) {
+      arcylicLamp.setPixelColor(q, arcylicLamp.Color(b3, b3, b3));
+      arcylicLamp.show();
+    }
+    for (int q = 2; q < f; q++) {
+      arcylicLamp.setPixelColor(q, arcylicLamp.Color(0, 0, 0));
+      arcylicLamp.show();
+    }
+  } else {
+    for (int p = f; p < f + 3; p++) {
+      arcylicLamp.setPixelColor(p, arcylicLamp.Color(b3, b3, b3));
+      arcylicLamp.show();
+    }
 
-  for (int s = f + 3; s < NUMPIXEL3; s++) {
-    arcylicLamp.setPixelColor(s, arcylicLamp.Color(0, 0, 0));
-    arcylicLamp.show();
+    for (int q = 0; q < f; q++) {
+      arcylicLamp.setPixelColor(q, arcylicLamp.Color(0, 0, 0));
+      arcylicLamp.show();
+    }
+
+    for (int s = f + 3; s < NUMPIXEL3; s++) {
+      arcylicLamp.setPixelColor(s, arcylicLamp.Color(0, 0, 0));
+      arcylicLamp.show();
+    }
   }
 
   previous = current;
