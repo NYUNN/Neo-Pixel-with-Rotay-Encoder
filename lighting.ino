@@ -90,7 +90,7 @@ void loop() {
   previous = current;
 
   // metal lamp
-  for (int n = k; n < NUMPIXEL2; n++) {
+  for (int n = k; n < k + 3; n++) {
     metalLamp.setPixelColor(n, metalLamp.Color(b2, b2, b2));
     metalLamp.show();
   }
@@ -176,7 +176,6 @@ void ai1() {
     counter++;
   }
 }
-
 
 
 
