@@ -73,11 +73,7 @@ void loop() {
 
 
   // lighting for the wood lamp
-  for (int i = 0; i < 3; i++) {
-    woodLamp.setPixelColor(i, woodLamp.Color(100, 100, 100));
-    woodLamp.show();
-  }
-  for (int i = 3; i < NUMPIXEL1; i++) {
+  for (int i = 0; i < NUMPIXEL1; i++) {
     if (woodCol == 0) {
       woodLamp.setPixelColor(i, woodLamp.Color(0, b1 / 5 * 5, b1 / 5 * 0));
     } else if (woodCol == 1) {
@@ -96,28 +92,7 @@ void loop() {
 
 
   // lighting for the acrylic lamp
-  int k = map(arylicPot, 0, 1023, 0, NUMPIXEL2 - 2);
-  for (int i = k; i < k + 3; i++) {
-    acrylicLamp.setPixelColor(i, acrylicLamp.Color(100, 100, 100));
-    acrylicLamp.show();
-  }
-  for (int i = 0; i < k; i++) {
-    if (arylicCol == 0) {
-      acrylicLamp.setPixelColor(i, acrylicLamp.Color(b2 / 5 * 5, 0, b2));
-    } else if (arylicCol == 1) {
-      acrylicLamp.setPixelColor(i, acrylicLamp.Color(b2 / 5 * 3, 0, b2));
-    } else if (arylicCol == 2) {
-      acrylicLamp.setPixelColor(i, acrylicLamp.Color(b2 / 5 * 1, 0, b2));
-    } else if (arylicCol == 3) {
-      acrylicLamp.setPixelColor(i, acrylicLamp.Color(b2 / 5 * 0, 0, b2));
-    } else if (arylicCol == 4) {
-      acrylicLamp.setPixelColor(i, acrylicLamp.Color(b2 / 5 * 2, 0, b2));
-    } else {
-      acrylicLamp.setPixelColor(i, acrylicLamp.Color(b2 / 5 * 4, 0, b2));
-    }
-    acrylicLamp.show();
-  }
-  for (int i = k + 3; i < NUMPIXEL2; i++) {
+  for (int i = 0; i < NUMPIXEL2; i++) {
     if (arylicCol == 0) {
       acrylicLamp.setPixelColor(i, acrylicLamp.Color(b2 / 5 * 5, 0, b2));
     } else if (arylicCol == 1) {
@@ -141,48 +116,85 @@ void loop() {
     if (index > NUMPIXEL3 - 1) {
       index = 0;
     }
+    if (index == NUMPIXEL3 - 2) {
+      for (int i = index; i < index + 2; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(b3, b3, b3));
+        metalLamp.show();
+      }
+      metalLamp.setPixelColor(0, metalLamp.Color(b3, b3, b3));
+      metalLamp.show();
+      for (int i = 1; i < index; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
+        metalLamp.show();
+      }
+    } else if ( index == NUMPIXEL3 - 1) {
+      metalLamp.setPixelColor(NUMPIXEL3 - 1, metalLamp.Color(b3, b3, b3));
+      metalLamp.show();
+      for (int i = 0; i < 2; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(b3, b3, b3));
+        metalLamp.show();
+      }
+      for (int i = 2; i < index; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
+        metalLamp.show();
+      }
+    } else {
+      for (int i = index; i < index + 3; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(b3, b3, b3));
+        metalLamp.show();
+      }
+      for (int i = 0; i < index; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
+        metalLamp.show();
+      }
+      for (int i = index + 3; i < NUMPIXEL3; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
+        metalLamp.show();
+      }
+    }
+
   } else if (difference < 0) {
     index--;
     if (index < 0) {
       index = NUMPIXEL3 - 1;
     }
-  }
+    if (index == NUMPIXEL3 - 2) {
+      for (int i = index; i < index + 2; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 100, b3));
+        metalLamp.show();
+      }
+      metalLamp.setPixelColor(0, metalLamp.Color(0, 100, b3));
+      metalLamp.show();
+      for (int i = 1; i < index; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
+        metalLamp.show();
+      }
+    } else if ( index == NUMPIXEL3 - 1) {
+      metalLamp.setPixelColor(NUMPIXEL3 - 1, metalLamp.Color(0, 100, b3));
+      metalLamp.show();
+      for (int i = 0; i < 2; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 100, b3));
+        metalLamp.show();
+      }
+      for (int i = 2; i < index; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
+        metalLamp.show();
+      }
+    } else {
+      for (int i = index; i < index + 3; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 100, b3));
+        metalLamp.show();
+      }
+      for (int i = 0; i < index; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
+        metalLamp.show();
+      }
+      for (int i = index + 3; i < NUMPIXEL3; i++) {
+        metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
+        metalLamp.show();
+      }
+    }
 
-  if (index == NUMPIXEL3 - 2) {
-    for (int i = index; i < index + 2; i++) {
-      metalLamp.setPixelColor(i, metalLamp.Color(b3, b3, b3));
-      metalLamp.show();
-    }
-    metalLamp.setPixelColor(0, metalLamp.Color(b3, b3, b3));
-    metalLamp.show();
-    for (int i = 1; i < index; i++) {
-      metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
-      metalLamp.show();
-    }
-  } else if ( index == NUMPIXEL3 - 1) {
-    metalLamp.setPixelColor(NUMPIXEL3 - 1, metalLamp.Color(b3, b3, b3));
-    metalLamp.show();
-    for (int i = 0; i < 2; i++) {
-      metalLamp.setPixelColor(i, metalLamp.Color(b3, b3, b3));
-      metalLamp.show();
-    }
-    for (int i = 2; i < index; i++) {
-      metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
-      metalLamp.show();
-    }
-  } else {
-    for (int i = index; i < index + 3; i++) {
-      metalLamp.setPixelColor(i, metalLamp.Color(b3, b3, b3));
-      metalLamp.show();
-    }
-    for (int i = 0; i < index; i++) {
-      metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
-      metalLamp.show();
-    }
-    for (int i = index + 3; i < NUMPIXEL3; i++) {
-      metalLamp.setPixelColor(i, metalLamp.Color(0, 0, 0));
-      metalLamp.show();
-    }
   }
 
   delay(100);
