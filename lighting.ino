@@ -8,8 +8,8 @@
 #define PIN3            11 // metal
 
 #define NUMPIXEL1       36 // wood
-#define NUMPIXEL2       40 // acrylic
-#define NUMPIXEL3       16 // metal
+#define NUMPIXEL2       35 // acrylic
+#define NUMPIXEL3       14 // metal
 
 Adafruit_NeoPixel woodLamp = Adafruit_NeoPixel(NUMPIXEL1, PIN1, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel acrylicLamp = Adafruit_NeoPixel(NUMPIXEL2, PIN2, NEO_GRB + NEO_KHZ800);
@@ -49,9 +49,9 @@ void loop() {
   }
 
   // brightness for neopixel
-  int b1 = maxData; // wood
+  int b1 = 255; // wood
   int b2 = maxData; // acrylic
-  int b3 = 100; // metal
+  int b3 = 255; // metal
 
   int woodPot = analogRead(A0);
   int arylicPot = analogRead(A1);
@@ -65,9 +65,9 @@ void loop() {
 
   // send data to MAXMSP
   int encoderValue = map(counter, 0, 65535, 0, 1023);
-  Serial.print(woodCol, DEC);
+  Serial.print(woodCol);
   Serial.print(" ");
-  Serial.print(arylicCol, DEC);
+  Serial.print(arylicCol);
   Serial.print(" ");
   Serial.println(encoderValue);
 
@@ -144,7 +144,7 @@ void loop() {
   } else if (difference < 0) {
     index--;
     if (index < 0) {
-      index = 15;
+      index = NUMPIXEL3 - 1;
     }
   }
 
@@ -185,7 +185,7 @@ void loop() {
     }
   }
 
-  delay(10);
+  delay(100);
 }
 
 
